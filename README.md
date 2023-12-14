@@ -22,6 +22,12 @@ Welcome to the HRM Tool, a Spring Boot project designed to streamline Human Reso
    ```
 
    The application will start at `http://localhost:8080`.
+###Video Tutorial
+
+https://github.com/moxhadeel571/HRMTOOL_SPRINGBOOT/assets/60618158/7efa0851-1684-4b9c-b161-c1bf582fa167
+
+
+
 
 ### Import sql into MySQL
 If your exported dataset is in a ZIP file containing SQL files and you want to import it into your MySQL database, follow these steps:
