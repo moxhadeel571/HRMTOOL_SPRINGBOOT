@@ -23,35 +23,51 @@ Welcome to the HRM Tool, a Spring Boot project designed to streamline Human Reso
 
    The application will start at `http://localhost:8080`.
 
-### Import CSV into MySQL
+### Import sql into MySQL
+If your exported dataset is in a ZIP file containing SQL files and you want to import it into your MySQL database, follow these steps:
 
-To import CSV data into the MySQL database:
+### Prerequisites
 
-1. Create a table in MySQL with the structure matching your CSV file.
-   ```sql
-   CREATE TABLE your_table_name (
-       column1 datatype,
-       column2 datatype,
-       ...
-   );
-   ```
+1. **MySQL Database:**
+   - Ensure you have a MySQL database set up.
+   - Make note of the database name.
 
-2. Use the MySQL `LOAD DATA` statement to import CSV data.
-   ```sql
-   LOAD DATA LOCAL INFILE 'path/to/your/file.csv'
-   INTO TABLE your_table_name
-   FIELDS TERMINATED BY ','
-   ENCLOSED BY '"'
-   LINES TERMINATED BY '\n'
-   IGNORE 1 ROWS;
-   ```
+### Steps to Import SQL Dataset from ZIP File
 
-Replace placeholders (`your_table_name`, `path/to/your/file.csv`, etc.) with your actual table name and file path.
+1. **Database Configuration:**
+   - Verify the MySQL database connection settings in `src/main/resources/application.properties`.
+   - Ensure your database exists; you noted the name earlier.
 
-Now, your CSV data should be successfully imported into the MySQL database.
+2. **Unzip the Dataset:**
+   - Extract the contents of your ZIP file to a directory on your local machine.
 
-### Explore the HRM Tool
+3. **Run SQL Scripts:**
+   - Open your MySQL command-line interface or any MySQL database management tool.
 
-The HRM Tool offers features like leave management, file handling, and more. Visit the [GitHub Repository](https://github.com/moxhadeel571/HRMTOOL_SPRINGBOOT) for detailed information.
+4. **Navigate to SQL Files:**
+   - Navigate to the directory where your extracted SQL dataset files are located.
 
-Feel free to explore and enhance the HRM Tool according to your HR management needs!
+5. **Import SQL Scripts:**
+   - Run the following command for each SQL script in the directory:
+
+     ```sql
+     source your_dataset_file.sql;
+     ```
+
+   Replace `your_dataset_file.sql` with the actual name of your SQL script.
+
+6. **Running the Application:**
+   - Start the Spring Boot application using the following command:
+
+     ```bash
+     ./gradlew bootRun
+     ```
+
+   The application will start at `http://localhost:8080`.
+
+7. **Explore the HRM Tool:**
+   - Visit the [HRM Tool](https://github.com/moxhadeel571/HRMTOOL_SPRINGBOOT) for features such as leave management, file handling, and more.
+
+Now, your MySQL database should be populated with the imported dataset from the ZIP file. Feel free to explore the HRM Tool using the imported data.
+
+For detailed instructions on importing data, refer to the MySQL documentation or visit [MySQL LOAD DATA](https://dev.mysql.com/doc/refman/8.0/en/load-data.html).
