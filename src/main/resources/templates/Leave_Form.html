@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Leave Form</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+<div th:insert="Fragment/Header::header"></div>
+
+<h1 class="title text-center">Leave Form</h1>
+<div class="container-fluid">
+	<div class="form-group">
+		<form th:action="@{/api/v2/save-leave}"  th:Object="${email}" method="post" enctype="multipart/form-data">
+			<div class="container">
+				<div class=" mb-3">
+					<label for="fullName" class="form-label">Full Name</label>
+					<input type="text" class="form-control" name="full_name"  id="fullName" placeholder="Jack">
+				</div>
+				<div class=" mb-3">
+					<label for="employee_id" class="form-label">Employee Id</label>
+					<input type="text" class="form-control" name="employee_id"  id="employee_id" placeholder="JAP_321">
+				</div>
+				<div class=" mb-3">
+					<label for="job_title" class="form-label">Job Title</label>
+					<input type="text" class="form-control" name="job_title"  id="job_title" placeholder="Developer">
+				</div>
+
+				<div class="mb-3">
+					<label for="department" class="form-label">Department</label>
+					<select class="form-select" id="department"  name="department"   required>
+						<option value="" disabled selected>Select department</option>
+						<option value="HR">Human Resources</option>
+						<option value="IT">Information Technology</option>
+						<option value="Finance">Finance</option>
+						<option value="Production">Production</option>
+						<option value="Recruitment">Recruitment</option>
+						<option value="Management">Management</option>
+						<!-- Add more options as needed t-->
+					</select>
+				</div>
+
+
+				<div class="mb-3">
+					<label for="leave_type" class="form-label">Leave Type</label>
+					<select class="form-select" id="leave_type" name="leave_type"  required>
+						<option value=""  selected>Select leave type</option>
+						<option value="Vacation">Vacation</option>
+						<option value="Sick Leave">Sick Leave</option>
+						<option value="Personal Leave">Personal Leave</option>
+						<!-- Add more options as needed -->
+					</select>
+				</div>
+				<div class=" mb-3">
+					<label for="end_date" class="form-label">Start Date</label>
+					<input type="Date" class="form-control" id="end_date" name="end_date"  placeholder="12-XX-XXX">
+				</div>
+				<div class=" mb-3">
+					<label for="start_date" class="form-label">End Date</label>
+					<input type="Date" class="form-control" id="start_date"  name="start_date"  placeholder="2-XX-XXX">
+				</div>
+				<div class=" mb-3">
+					<label for="total_days" class="form-label">Total Days</label>
+					<input type="text" class="form-control" id="total_days" name="total_days"  placeholder="1-12">
+				</div>
+				<div class=" mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" id="email" name="to"  th:field="*{to}" placeholder="Jack@yahoo.com">
+				</div>
+				<div class="form-floating mb-3">
+					<label for="leave_reason">leave Reason</label>
+					<textarea class="form-control" placeholder="Leave a comment here"  name="leave_reason" id="leave_reason" style="height: 200px" ></textarea>
+				</div>
+				<div class=" mb-3">
+					<label for="phone" class="form-label">Phone Number</label>
+					<input type="text" class="form-control" name="phone"  id="phone" placeholder="+921222XXXX">
+				</div>
+				<div class="mb-3">
+					<label for="formFileMultiple" class="form-label">Multiple files input for medical or tickets</label>
+					<input class="form-control" type="file" name="filedata"  id="formFileMultiple" multiple="multiple">
+				</div>
+				<div class=" mb-3">
+					<label for="alternative_contact" class="form-label">Alternative Contact</label>
+					<input type="text" class="form-control" id="alternative_contact" name="alternative_contact"  placeholder="....">
+				</div>
+				<div class=" mb-3">
+					<label for="additional_comments" class="form-label">Additional Comments</label>
+					<input type="text" class="form-control" id="additional_comments" name="additional_comments"  placeholder="Type here....">
+				</div>
+				<div class="btn">
+					<button id="alert" class="btn btn-outline-dark d-flex justify-content-center"> Button
+					</button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+<script>
+	document.getElementById("alert").addEventListener('click',function (){
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your application has been send",
+            showConfirmButton: false,
+            timer: 5500
+        });
+	})
+
+
+</script>
+<div class="footer"  th:insert="Fragment/Footer::footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

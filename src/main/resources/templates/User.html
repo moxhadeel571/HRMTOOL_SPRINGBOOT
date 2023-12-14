@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<style>
+
+
+        .card-body{
+	        background-color: ghostwhite;
+	        border-bottom-color: #00C9FF;
+        }
+        .card{
+	        border-bottom-color: #00C9FF;
+	        border-bottom-style:  solid ;
+        }
+        .card.card-body {
+            border-radius: 12%;
+            border: 2px solid #000; /* Add a solid border */
+            max-height: 300px;
+            max-width: 350px;
+            padding: 12px; /* Use padding instead of padding-right */
+            margin-bottom: 12px; /* Add margin-bottom for spacing between cards */
+            background-color: ghostwhite;
+        }
+
+        footer {
+            background-color: #7CB9E8;
+        }
+        .btn{
+            background-color: #7CB9E8;
+	        position: static;
+
+        }
+        #digitalClock {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+.container{
+	margin-bottom: 50px;
+}
+.footer{
+	position: static;
+	margin-bottom: -12px;
+
+}
+	</style>
+</head>
+<body>
+<div th:insert="Fragment/Header::header"></div>
+<h1 class="text-center text-bg">Employee Dashboard</h1>
+<div id="digitalClock" th:text="${currentTime}"></div>
+<br>
+
+
+
+	<div class="container">
+		<div class="card-group">
+			<div class="card">
+				<img src="/Images/New_employee_bro.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Leave Apply</h5>
+					<p class="card-text">Apply for leave before one day with certain leave description and legitimate reason</p>
+					<p class="card-text"><small class="text-body-secondary">Mention with proper details</small></p>
+					<!-- Button trigger modal -->
+
+					<div class="modal-footer d-flex justify-content-between">
+						<a type="button" class="btn btn-outline-success" href="/api/v2/form">
+							Form
+						</a>
+						<a th:href="@{/api/v2/leave_application}" class="btn ">View</a>
+					</div>
+
+					<!-- Modal -->
+				</div>
+			</div>
+			<div class="card">
+				<img src="/Images/Filebundle-bro.png" class="card-img-top" alt="Attendance Tracking Image">
+				<div class="card-body">
+					<h5 class="card-title">Maintaine Your File</h5>
+					<p class="card-text">
+						Keep track of your file Management, upload-in and download, and leave balances.
+					</p>
+					<div class="modal-footer d-flex justify-content-center">
+
+						<a th:href="@{/api/v2/files}" class="btn   d-flex justify-content-center button">Add file</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="/Images/Work%20anniversary-amico.png" class="card-img-top" alt="Attendance Tracking Image">
+				<div class="card-body">
+					<h5 class="card-title">Attendance Tracking</h5>
+					<p class="card-text">
+						Keep track of your attendance history, clock-in and clock-out times, and leave balances.
+					</p>
+					<div class="modal-footer d-flex justify-content-center">
+
+					<a th:href="@{/api/v2/attendence}" class="btn   d-flex justify-content-center button">View Attendance</a>
+				</div>
+				</div>
+			</div>
+			<div class="card">
+				<img src="/Images/Taking%20notes-rafiki.png" class="card-img-top" alt="Announcements Image">
+				<div class="card-body">
+					<h5 class="card-title">Announcements and News</h5>
+					<p class="card-text">
+						Stay informed about important company announcements, news, and updates.
+					</p>
+					<br>
+					<div class="modal-footer d-flex justify-content-center">
+
+					<a th:href="@{/api/v2/announcements}" class="btn   d-flex justify-content-center button">Read Latest News</a>
+				</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+<div class="footer"  th:insert="Fragment/Footer::footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

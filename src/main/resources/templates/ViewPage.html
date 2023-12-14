@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="Fragment/Header::header"></div>
+<section style="background-color: #eee;">
+	<div class="container py-5">
+		<div class="row" th:each="data:${employee}">
+			<div class="col-lg-4">
+				<div class="card mb-4">
+					<div class="card-body text-center">
+						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+						     class="rounded-circle img-fluid" style="width: 150px;">
+						<h5 class="my-3" th:text="${employee.FName+' '+employee.LName}"></h5>
+						<p class="text-muted mb-1" th:text="${employee.title}"></p>
+						<p class="text-muted mb-4" th:text="${employee.ADEmail}"></p>
+						<div class="d-flex justify-content-center mb-2">
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Message</button>
+
+							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<form th:action="@{/api/v1/send_email}  " method="post" th:object="${Data_info}">
+
+										<div class="modal-body">
+												<div class="mb-3">
+													<label for="recipient-name" class="col-form-label">Recipient:</label>
+													<input type="text" th:field="*{to}" class="form-control" name="to" id="recipient-name">
+												</div>
+											<div class="mb-3">
+													<label for="recipient-name" class="col-form-label">Recipient:</label>
+													<input type="text" th:field="*{subject}" class="form-control" name="to" id="recipient-subject">
+												</div>
+												<div class="mb-3">
+													<label for="message-text"  class="col-form-label">Message:</label>
+													<textarea class="form-control" th:field="*{body}" id="message-text"></textarea>
+												</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+											<button type="submit" class="btn btn-primary">Send message</button>
+										</div>
+										</form>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<div class="card mb-4">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Full Name</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0" th:text="${employee.FName+' '+employee.LName}"> </p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0" >Email</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0" th:text="${employee.ADEmail}"></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0" >Date Of Birth</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0" th:text="${employee.DOB}"></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Location Code</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0" th:text="${employee.lcode}"></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Employee Status</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0 badge text-bg-success" th:text="${employee.empstatus}"></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Employee Type</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0" th:text="${employee.emptype}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card mb-4 mb-md-0">
+							<div class="card-body">
+								<p class="mb-4"><span class="text-primary font-italic me-1">Office Details</span> Employee Information
+								</p>
+								<p class="mb-1 badge text-bg-info" >Supervisor</p>
+									<p class="text-muted mb-0" th:text="${employee.supervisor}"></p>
+								<p class="mb-1 badge text-bg-info" >Business Unit</p>
+								<p class="text-muted mb-0" th:text="${employee.businessunit}"></p>
+								<p class="mb-1 badge text-bg-info" >Pay Zone</p>
+								<p class="text-muted mb-0" th:text="${employee.payzone}"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card mb-4 mb-md-0">
+							<div class="card-body">
+								<p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+								</p>
+								<p class="mb-1 badge text-bg-info" >Employee Classification Type</p>
+								<p class="text-muted mb-0" th:text="${employee.empclassificationype}"></p>
+								<p class="mb-1 badge text-bg-info" >Department Type</p>
+								<p class="text-muted mb-0" th:text="${employee.departmenttype}">
+
+								</p><p class="mb-1 badge text-bg-info" >Division</p>
+								<p class="text-muted mb-0" th:text="${employee.division}"></p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

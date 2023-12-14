@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HR Dashboard</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/d98b7a61d2.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    .navbar {
+        background-color: #662d91;
+        font-style: normal;
+    }
+
+    .jumbotron {
+        box-shadow: 10px 10px 5px lightgrey;
+        max-width: 100%;
+        border-left: 5px;
+        object-fit: contain;
+    }
+
+
+
+</style>
+<body class="body">
+<div th:insert="Fragment/Header::header"></div>
+<div class="container mh-100">
+	<div class="jumbotron text-center">
+		<h1 class="display-4">Welcome, HR!</h1>
+		<p class="lead">Explore the dashboard for HR functionalities.</p>
+
+	</div>
+</div>
+<div class="container">
+<div class="row">
+	<div class="col-sm-6 mb-3 mb-sm-0">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">TOTAL WORKER</h5>
+				<p class="badge bg-primary text-wrap" th:text="${workers}"></p>
+				<i class="fa-solid fa-users-between-lines fa-fade fa-xl" style="color: #729adf;"></i>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="col-sm-6">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title"><i class="fa-brands fa-creative-commons-by fa-xl" style="color: #669eff;"></i>ACTIVE WORKER</h5>
+				<p class="card-text">See how many workers are active in field.</p>
+				<p th:text="${active}"class="badge bg-primary text-wrap"></p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="col-sm-6">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Employee Information</h5>
+
+				<!-- Part-Time Employees -->
+				<p class="card-text">
+					Part-Time Employees: <span class="badge bg-primary text-wrap" th:text="${partTime}">
+					<i class="fa-solid fa-file-contract fa-xl" style="color: #669eff;"></i>
+				</span>
+				</p>
+				<p class="card-text">Part-time employees work fewer hours than full-time employees and typically have a flexible schedule.</p>
+
+				<!-- Full-Time Employees -->
+				<p class="card-text">
+					Full-Time Employees: <span class="badge bg-primary text-wrap" th:text="${fullTime}"></span>
+				</p>
+				<p class="card-text">Full-time employees work standard or extended hours and may receive additional benefits.</p>
+
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="card shadow">
+			<div class="card-body">
+				<h5 class="card-title">Gender Information</h5>
+
+				<!-- Male Employees -->
+				<p class="card-text">
+					<i class="fa-solid fa-person fa-beat fa-xl" style="color: #0080ff;"></i> Male Employees: <span class="badge bg-primary text-wrap" th:text="${male}">
+
+				</span>
+				</p>
+				<p class="card-text">Our workforce includes dedicated and talented male individuals contributing to our success.</p>
+
+				<!-- Female Employees -->
+				<p class="card-text">
+					<i class="fa-solid fa-person-dress fa-bounce fa-xl" style="color: #0080ff;"></i>Female Employees: <span class="badge bg-primary text-wrap" th:text="${female}"></span>
+				</p>
+				<p class="card-text">Our diverse team includes skilled and accomplished female professionals who play a crucial role in our organization.</p>
+			</div>
+		</div>
+	</div>
+<section>
+	<br>
+	<h1 class="card-text"> HR OPERATION</h1>
+	<div class="row row-cols-1 row-cols-md-2 g-4">
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+				<img src="/Images/leave.svg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Leave Application</h5>
+					<p class="card-text">Employees have requested leave for various reasons. Review and manage the leave requests here.</p>
+					<a href="/api/v1/leaveApp" class="btn btn-primary">View Leave Applications</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+				<img src="/Images/leadership-amico.svg" class="card-img-top" alt="Employee Photo">
+				<div class="card-body">
+					<h5 class="card-title">Your Employee Data</h5>
+					<p class="card-text">View and manage your employee data here. Keep your information up-to-date.</p>
+					<a th:href="@{/api/v1/Employee_Data}" class="btn btn-primary">View Data</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+				<img src="/Images/Happy-announcement-pana.svg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Announcements and News</h5>
+					<p class="card-text">Stay informed about important company announcements, news, and updates..</p>
+					<a href="/api/v1/NewsAndAnnouncements" class="btn btn-primary">View Data</a>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+				<img src="/Images/Confirmed-attendance-rafiki.svg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Attendance Tracking</h5>
+					<p class="card-text">Keep track of your Employees attendance history, clock-in and clock-out times, and leave balances..</p>
+					<a href="" class="btn btn-primary">View News</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+</div>
+<div class="footer"  th:insert="Fragment/Footer::footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
