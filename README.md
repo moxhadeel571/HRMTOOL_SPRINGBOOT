@@ -54,6 +54,14 @@ If your exported dataset is in a ZIP file containing SQL files and you want to i
      source your_dataset_file.sql;
      ```
 
+----------------------------------------------------------------------------------
+**Video Tutorial**
+
+
+https://github.com/moxhadeel571/Food_ordering/assets/60618158/531e586c-6349-4132-ac90-30aa751a7d6a
+
+
+----------------------------------------------------------------------------------
    Replace `your_dataset_file.sql` with the actual name of your SQL script.
 
 6. **Running the Application:**
